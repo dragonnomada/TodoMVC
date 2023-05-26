@@ -83,16 +83,41 @@
             </objects>
             <point key="canvasLocation" x="947.32824427480909" y="3.5211267605633805"/>
         </scene>
-        <!--View Controller-->
+        <!--Todo Add View Controller-->
         <scene sceneID="EF1-kh-mrp">
             <objects>
-                <viewController id="3fY-Ym-39G" sceneMemberID="viewController">
+                <viewController id="3fY-Ym-39G" customClass="TodoAddViewController" customModule="TodoMVC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XRx-VZ-EQy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write something to-do" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H4w-lk-5p5">
+                                <rect key="frame" x="20" y="404" width="353" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fg-aU-mWE">
+                                <rect key="frame" x="169.33333333333334" y="478" width="54.666666666666657" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                                <connections>
+                                    <action selector="addAction:" destination="3fY-Ym-39G" eventType="touchUpInside" id="cAf-9a-fsc"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="QKX-At-8sU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6fg-aU-mWE" firstAttribute="centerX" secondItem="XRx-VZ-EQy" secondAttribute="centerX" id="0qS-DD-nJT"/>
+                            <constraint firstItem="6fg-aU-mWE" firstAttribute="top" secondItem="H4w-lk-5p5" secondAttribute="bottom" constant="40" id="Gc0-SI-7Zo"/>
+                            <constraint firstItem="QKX-At-8sU" firstAttribute="trailing" secondItem="H4w-lk-5p5" secondAttribute="trailing" constant="20" id="JTz-ey-pD3"/>
+                            <constraint firstItem="H4w-lk-5p5" firstAttribute="leading" secondItem="QKX-At-8sU" secondAttribute="leading" constant="20" id="QRU-gB-Raa"/>
+                            <constraint firstItem="H4w-lk-5p5" firstAttribute="centerY" secondItem="XRx-VZ-EQy" secondAttribute="centerY" id="SD8-zB-5Bq"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleTextField" destination="H4w-lk-5p5" id="5Mz-v6-kRf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5kD-31-cm8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

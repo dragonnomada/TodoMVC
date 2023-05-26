@@ -23,6 +23,8 @@
 		EBEFCFB82A2073A1000CA445 /* TodoDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEFCFB72A2073A1000CA445 /* TodoDetailController.swift */; };
 		EBEFCFBA2A207947000CA445 /* TodoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEFCFB92A207947000CA445 /* TodoEditViewController.swift */; };
 		EBEFCFBC2A207CB3000CA445 /* TodoEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEFCFBB2A207CB3000CA445 /* TodoEditController.swift */; };
+		EBEFCFBE2A208B84000CA445 /* TodoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEFCFBD2A208B84000CA445 /* TodoAddViewController.swift */; };
+		EBEFCFC02A208CA5000CA445 /* TodoAddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEFCFBF2A208CA5000CA445 /* TodoAddController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		EBEFCFB72A2073A1000CA445 /* TodoDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailController.swift; sourceTree = "<group>"; };
 		EBEFCFB92A207947000CA445 /* TodoEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoEditViewController.swift; sourceTree = "<group>"; };
 		EBEFCFBB2A207CB3000CA445 /* TodoEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoEditController.swift; sourceTree = "<group>"; };
+		EBEFCFBD2A208B84000CA445 /* TodoAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddViewController.swift; sourceTree = "<group>"; };
+		EBEFCFBF2A208CA5000CA445 /* TodoAddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 				EBEFCFAC2A205637000CA445 /* TodoHomeViewController.swift */,
 				EBEFCFB52A206DD8000CA445 /* TodoDetailViewController.swift */,
 				EBEFCFB92A207947000CA445 /* TodoEditViewController.swift */,
+				EBEFCFBD2A208B84000CA445 /* TodoAddViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 				EBEFCFAE2A20565A000CA445 /* TodoHomeController.swift */,
 				EBEFCFB72A2073A1000CA445 /* TodoDetailController.swift */,
 				EBEFCFBB2A207CB3000CA445 /* TodoEditController.swift */,
+				EBEFCFBF2A208CA5000CA445 /* TodoAddController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -304,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBEFCFAF2A20565A000CA445 /* TodoHomeController.swift in Sources */,
+				EBEFCFC02A208CA5000CA445 /* TodoAddController.swift in Sources */,
 				EBEFCFBA2A207947000CA445 /* TodoEditViewController.swift in Sources */,
 				EBEFCFAD2A205637000CA445 /* TodoHomeViewController.swift in Sources */,
 				EBEFCFB82A2073A1000CA445 /* TodoDetailController.swift in Sources */,
@@ -311,6 +318,7 @@
 				EBEFCF7A2A204DE8000CA445 /* AppDelegate.swift in Sources */,
 				EBEFCFB12A20569D000CA445 /* TodoModel.swift in Sources */,
 				EBEFCFBC2A207CB3000CA445 /* TodoEditController.swift in Sources */,
+				EBEFCFBE2A208B84000CA445 /* TodoAddViewController.swift in Sources */,
 				EBEFCF7C2A204DE8000CA445 /* SceneDelegate.swift in Sources */,
 				EBEFCFB62A206DD8000CA445 /* TodoDetailViewController.swift in Sources */,
 			);

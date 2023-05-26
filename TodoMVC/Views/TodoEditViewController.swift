@@ -32,6 +32,8 @@ class TodoEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Todo Edit"
+        
         todoEditController.initialize()
     }
     

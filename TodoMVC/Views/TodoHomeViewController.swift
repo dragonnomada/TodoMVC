@@ -15,8 +15,8 @@ class TodoHomeViewController: UIViewController {
         let todoHomeController = TodoHomeController(self)
         
         // TODO: Configure todoHomeController
-        //controller.deleteAllTodos()
-        todoHomeController.generateSampleTodos()
+        //todoHomeController.deleteAllTodos()
+        //todoHomeController.generateSampleTodos()
         
         return todoHomeController
     }()
@@ -42,6 +42,12 @@ class TodoHomeViewController: UIViewController {
                     print("Todo Detail is updating...")
                     self.refresh()
                 }
+            }
+        }
+        
+        if let todoAddViewController = segue.destination as? TodoAddViewController {
+            todoAddViewController.update = {_ in
+                self.refresh()
             }
         }
     }
