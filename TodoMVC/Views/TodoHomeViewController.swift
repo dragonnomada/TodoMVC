@@ -25,14 +25,23 @@ class TodoHomeViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Todo Home"
-
+        
+        refresh()
+    }
+    
+    func refresh() {
         todoHomeController.configureTableView(todosTableView)
+        todosTableView.reloadData()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let todoDetailViewController = segue.destination as? TodoDetailViewController {
             if let todo = sender as? TodoEntity {
                 todoDetailViewController.todo = todo
+                todoDetailViewController.update = { todo in
+                    print("Todo Detail is updating...")
+                    self.refresh()
+                }
             }
         }
     }

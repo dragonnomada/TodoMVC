@@ -106,18 +106,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="162" translatesAutoresizingMaskIntoConstraints="NO" id="Vdr-4g-wZr">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Vdr-4g-wZr">
                                 <rect key="frame" x="20" y="123" width="353" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSH-m7-L5i">
-                                        <rect key="frame" x="0.0" y="0.0" width="141.66666666666666" height="40"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <rect key="frame" x="0.0" y="9.9999999999999982" width="78.333333333333329" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⭕️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRD-SU-3AX">
-                                        <rect key="frame" x="315" y="0.0" width="38" height="40"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <rect key="frame" x="330" y="9.9999999999999982" width="23" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -182,16 +182,76 @@
             </objects>
             <point key="canvasLocation" x="947" y="720"/>
         </scene>
-        <!--View Controller-->
+        <!--Todo Edit View Controller-->
         <scene sceneID="brb-E8-Agh">
             <objects>
-                <viewController id="jcR-Ml-Xpw" sceneMemberID="viewController">
+                <viewController id="jcR-Ml-Xpw" customClass="TodoEditViewController" customModule="TodoMVC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Oa-4g-XNb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="vmP-pr-oYJ">
+                                <rect key="frame" x="20" y="120" width="353" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write something to-do" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wVU-c9-Sbb">
+                                        <rect key="frame" x="0.0" y="0.0" width="277" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xyS-wz-9nf">
+                                        <rect key="frame" x="304" y="0.0" width="51" height="40"/>
+                                    </switch>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pzR-0j-edB"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4g2-P1-2b8">
+                                <rect key="frame" x="20" y="200" width="353" height="34.333333333333343"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                <connections>
+                                    <action selector="doneAction:" destination="jcR-Ml-Xpw" eventType="touchUpInside" id="NVi-kW-PJi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAH-6S-bpz">
+                                <rect key="frame" x="20" y="274.33333333333331" width="353" height="34.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system" title="Delete" titleAlignment="automatic">
+                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="deleteAction:" destination="jcR-Ml-Xpw" eventType="touchUpInside" id="XBk-WE-vkw"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo Edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbd-aY-BB3">
+                                <rect key="frame" x="20" y="40" width="353" height="40.666666666666657"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ctd-2d-XYf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aAH-6S-bpz" firstAttribute="top" secondItem="4g2-P1-2b8" secondAttribute="bottom" constant="40" id="Dke-uw-44T"/>
+                            <constraint firstItem="vmP-pr-oYJ" firstAttribute="leading" secondItem="ctd-2d-XYf" secondAttribute="leading" constant="20" id="Dl7-QW-BX3"/>
+                            <constraint firstItem="Qbd-aY-BB3" firstAttribute="top" secondItem="ctd-2d-XYf" secondAttribute="top" constant="40" id="LiD-cD-047"/>
+                            <constraint firstItem="4g2-P1-2b8" firstAttribute="leading" secondItem="ctd-2d-XYf" secondAttribute="leading" constant="20" id="OCo-iu-Beh"/>
+                            <constraint firstItem="ctd-2d-XYf" firstAttribute="trailing" secondItem="4g2-P1-2b8" secondAttribute="trailing" constant="20" id="OlA-dH-cOI"/>
+                            <constraint firstItem="ctd-2d-XYf" firstAttribute="trailing" secondItem="vmP-pr-oYJ" secondAttribute="trailing" constant="20" id="Phi-Nf-dkp"/>
+                            <constraint firstItem="ctd-2d-XYf" firstAttribute="trailing" secondItem="aAH-6S-bpz" secondAttribute="trailing" constant="20" id="UHt-ae-P3j"/>
+                            <constraint firstItem="vmP-pr-oYJ" firstAttribute="top" secondItem="Qbd-aY-BB3" secondAttribute="top" constant="80" id="a9u-Y4-GEh"/>
+                            <constraint firstItem="Qbd-aY-BB3" firstAttribute="leading" secondItem="ctd-2d-XYf" secondAttribute="leading" constant="20" id="amR-P6-uXM"/>
+                            <constraint firstItem="ctd-2d-XYf" firstAttribute="trailing" secondItem="Qbd-aY-BB3" secondAttribute="trailing" constant="20" id="c28-13-zDN"/>
+                            <constraint firstItem="4g2-P1-2b8" firstAttribute="top" secondItem="vmP-pr-oYJ" secondAttribute="bottom" constant="40" id="c7Z-X8-Dxg"/>
+                            <constraint firstItem="aAH-6S-bpz" firstAttribute="leading" secondItem="ctd-2d-XYf" secondAttribute="leading" constant="20" id="yHr-v5-EW5"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="checkedSwitch" destination="xyS-wz-9nf" id="FLI-ld-JBv"/>
+                        <outlet property="titleTextField" destination="wVU-c9-Sbb" id="X1N-5E-wDd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nuu-2Y-H11" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -217,8 +277,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="trash" catalog="system" width="117" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

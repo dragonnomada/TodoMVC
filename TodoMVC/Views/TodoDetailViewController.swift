@@ -13,6 +13,8 @@ class TodoDetailViewController: UIViewController {
     
     var todo: TodoEntity?
     
+    var update: TodoHandler = defaultTodoHandler
+    
     lazy var todoDetailController: TodoDetailController = {
         let todoDetailController = TodoDetailController(self)
         
@@ -36,15 +38,42 @@ class TodoDetailViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Todo Details"
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Todo Details will appear")
+        refresh()
+    }
+    
+    func refresh() {
+        print("Todo Detail refreshing...")
+        
         todoDetailController.configureTitleLabel(titleLabel)
         todoDetailController.configureCheckLabel(checkedLabel)
         todoDetailController.configureCreateAtLabel(createdAtLabel)
         todoDetailController.configureUpdateAtLabel(updateAtLabel)
+        
+        if let todo = todo {
+            update(todo)
+        }
     }
     
     @IBAction func closeAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let todoEditViewController = segue.destination as? TodoEditViewController {
+            todoEditViewController.todo = todo
+            todoEditViewController.complete = { todo in
+                self.todoDetailController.setup(todo: todo)
+                self.refresh()
+            }
+            todoEditViewController.delete = { todo in
+                self.update(todo)
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
 }
