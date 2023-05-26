@@ -10,7 +10,15 @@ import UIKit
 
 class TodoHomeController: NSObject {
     
+    let todoModel: TodoModel
     
+    var checkedTodos: [TodoEntity] {
+        todoModel.
+    }
+    
+    init(todoModel: TodoModel) {
+        self.todoModel = todoModel
+    }
     
 }
 
@@ -21,7 +29,14 @@ extension TodoHomeController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section \(section)"
+        if section == 0 {
+            return "Unchecked Todos"
+        }
+        if section == 1 {
+            return "Checked Todos"
+        }
+        
+        return "Unknown"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

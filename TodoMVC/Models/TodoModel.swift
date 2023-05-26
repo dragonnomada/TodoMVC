@@ -8,21 +8,21 @@
 import Foundation
 import CoreData
 
-typealias Handler = () -> Void
-typealias ErrorHandler = (Error) -> Void
-typealias TodoHandler = (TodoEntity) -> Void
+public typealias Handler = () -> Void
+public typealias ErrorHandler = (Error) -> Void
+public typealias TodoHandler = (TodoEntity) -> Void
 
-let defaultHandler: Handler = {}
-let defaultErrorHandler: ErrorHandler = {_ in }
-let defaultTodoHandler: TodoHandler = {_ in }
+public let defaultHandler: Handler = {}
+public let defaultErrorHandler: ErrorHandler = {_ in }
+public let defaultTodoHandler: TodoHandler = {_ in }
 
-enum TodoModelError: Error {
+public enum TodoModelError: Error {
     case todoNotFound(id: UUID)
 }
 
-class TodoModel {
+public class TodoModel {
     
-    lazy var container: NSPersistentContainer = {
+    lazy private var container: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TodoMVC")
         container.loadPersistentStores { _, error in
             if let error = error {
@@ -32,9 +32,17 @@ class TodoModel {
         return container
     }()
     
-    var context: NSManagedObjectContext { container.viewContext }
+    private var context: NSManagedObjectContext { container.viewContext }
     
-    func save(completion: @escaping Handler = defaultHandler,
+    public var todosChecked: [TodoEntity] {
+        (try? context.fetch(TodoEntity.fetchRequest()).filter({$0.checked == true})) ?? []
+    }
+    
+    public var todosUnchecked: [TodoEntity] {
+        (try? context.fetch(TodoEntity.fetchRequest()).filter({$0.checked == false})) ?? []
+    }
+    
+    private func save(completion: @escaping Handler = defaultHandler,
               error: @escaping ErrorHandler = defaultErrorHandler) {
         do {
             try context.save()
@@ -45,11 +53,11 @@ class TodoModel {
         }
     }
     
-    func get(id: UUID) -> TodoEntity? {
+    public func get(id: UUID) -> TodoEntity? {
         return try? context.fetch(TodoEntity.fetchRequest()).first(where: { $0.id == id })
     }
     
-    func add(title: String,
+    public func add(title: String,
              success: @escaping TodoHandler = defaultTodoHandler,
              error: @escaping ErrorHandler = defaultErrorHandler) {
         let todo = TodoEntity(context: context)
@@ -67,7 +75,7 @@ class TodoModel {
         }
     }
     
-    func update(id: UUID, title: String?, checked: Bool?,
+    public func update(id: UUID, title: String?, checked: Bool?,
               success: @escaping TodoHandler = defaultTodoHandler,
               error: @escaping ErrorHandler = defaultErrorHandler) {
         guard let todo = get(id: id)
@@ -97,7 +105,7 @@ class TodoModel {
         }
     }
     
-    func delete(id: UUID,
+    public func delete(id: UUID,
                 success: @escaping TodoHandler = defaultTodoHandler,
                 error: @escaping ErrorHandler = defaultErrorHandler) {
         guard let todo = get(id: id)

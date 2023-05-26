@@ -11,8 +11,10 @@ class TodoHomeViewController: UIViewController {
 
     @IBOutlet weak var todosTableView: UITableView!
     
+    var todoModel: TodoModel?
+    
     lazy var todoHomeController = {
-        let controller = TodoHomeController()
+        let controller = TodoHomeController(todoModel: todoModel ?? TodoModel())
         
         // TODO: Configure the controller
         
