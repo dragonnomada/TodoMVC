@@ -10,10 +10,12 @@ import UIKit
 
 class TodoHomeController: NSObject {
     
-    let todoModel: TodoModel
+    let todoModel: TodoModel = AppDelegate.sharedTodoModel
+
+    let view: UIViewController
     
-    init(todoModel: TodoModel) {
-        self.todoModel = todoModel
+    init(_ view: UIViewController) {
+        self.view = view
     }
     
     func deleteAllTodos() {
@@ -36,6 +38,24 @@ class TodoHomeController: NSObject {
             todoModel.add(title: "Hello 4") { todo in
                 self.todoModel.update(id: todo.id ?? UUID(), title: nil, checked: true)
             }
+        }
+    }
+    
+}
+
+extension TodoHomeController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var todo: TodoEntity? = nil
+        
+        if indexPath.section == 0 {
+            todo = todoModel.todosUnchecked[indexPath.row]
+        } else {
+            todo = todoModel.todosChecked[indexPath.row]
+        }
+        
+        if let todo = todo {
+            view.performSegue(withIdentifier: "showTodoDetail", sender: todo)
         }
     }
     
@@ -74,9 +94,8 @@ extension TodoHomeController: UITableViewDataSource {
         
         var contentConfiguration = cell.defaultContentConfiguration()
         
-        let todo = todoModel.todosUnchecked[indexPath.row]
-        
         if indexPath.section == 0 {
+            let todo = todoModel.todosUnchecked[indexPath.row]
             contentConfiguration.text = "❌ \(todo.title ?? "<unknown>")"
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
@@ -84,6 +103,7 @@ extension TodoHomeController: UITableViewDataSource {
             contentConfiguration.secondaryText = "\(date)"
         }
         if indexPath.section == 1 {
+            let todo = todoModel.todosChecked[indexPath.row]
             contentConfiguration.text = "✅ \(todo.title ?? "<unknown>")"
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium

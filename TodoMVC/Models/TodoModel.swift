@@ -38,6 +38,10 @@ public class TodoModel {
         (try? context.fetch(TodoEntity.fetchRequest()))?.isEmpty ?? true
     }
     
+    public var todos: [TodoEntity] {
+        (try? context.fetch(TodoEntity.fetchRequest())) ?? []
+    }
+    
     public var todosChecked: [TodoEntity] {
         (try? context.fetch(TodoEntity.fetchRequest()).filter({$0.checked == true})) ?? []
     }

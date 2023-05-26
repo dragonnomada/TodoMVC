@@ -68,7 +68,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3H2-Tw-dbj">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="a73-7N-p5d">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="a73-7N-p5d">
                             <connections>
                                 <segue destination="3fY-Ym-39G" kind="presentation" id="VPz-55-kqS"/>
                             </connections>
@@ -76,6 +76,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="todosTableView" destination="csT-Bq-cQv" id="R8o-jH-XXy"/>
+                        <segue destination="Pgs-vb-c9i" kind="show" identifier="showTodoDetail" id="To9-5i-D0w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -97,20 +98,95 @@
             </objects>
             <point key="canvasLocation" x="1846.564885496183" y="3.5211267605633805"/>
         </scene>
-        <!--View Controller-->
+        <!--Todo Detail View Controller-->
         <scene sceneID="QYc-VB-jJh">
             <objects>
-                <viewController id="Pgs-vb-c9i" sceneMemberID="viewController">
+                <viewController id="Pgs-vb-c9i" customClass="TodoDetailViewController" customModule="TodoMVC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OPI-fm-Ycc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="162" translatesAutoresizingMaskIntoConstraints="NO" id="Vdr-4g-wZr">
+                                <rect key="frame" x="20" y="123" width="353" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSH-m7-L5i">
+                                        <rect key="frame" x="0.0" y="0.0" width="146.33333333333334" height="40"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⭕️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRD-SU-3AX">
+                                        <rect key="frame" x="308.33333333333331" y="0.0" width="44.666666666666686" height="40"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="F3f-r3-J3W"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created at: -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjC-qS-GUC">
+                                <rect key="frame" x="20" y="203" width="353" height="26.333333333333343"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated at: -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgA-XD-HRa">
+                                <rect key="frame" x="20" y="249.33333333333334" width="353" height="26.333333333333343"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naP-0G-pX8">
+                                <rect key="frame" x="40" y="315.66666666666669" width="313" height="34.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Close"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="CG9-da-340"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CG9-da-340" firstAttribute="trailing" secondItem="Vdr-4g-wZr" secondAttribute="trailing" constant="20" id="00Q-aX-LXb"/>
+                            <constraint firstItem="CG9-da-340" firstAttribute="trailing" secondItem="tgA-XD-HRa" secondAttribute="trailing" constant="20" id="02A-mM-zmm"/>
+                            <constraint firstItem="tgA-XD-HRa" firstAttribute="top" secondItem="XjC-qS-GUC" secondAttribute="bottom" constant="20" id="FLS-Vh-pGr"/>
+                            <constraint firstItem="CG9-da-340" firstAttribute="trailing" secondItem="XjC-qS-GUC" secondAttribute="trailing" constant="20" id="OSg-fB-O5P"/>
+                            <constraint firstItem="tgA-XD-HRa" firstAttribute="leading" secondItem="CG9-da-340" secondAttribute="leading" constant="20" id="Oth-Xk-dbP"/>
+                            <constraint firstItem="naP-0G-pX8" firstAttribute="leading" secondItem="CG9-da-340" secondAttribute="leading" constant="40" id="YfE-sc-Ltz"/>
+                            <constraint firstItem="Vdr-4g-wZr" firstAttribute="top" secondItem="CG9-da-340" secondAttribute="top" constant="20" id="YvK-gG-nbo"/>
+                            <constraint firstItem="CG9-da-340" firstAttribute="trailing" secondItem="naP-0G-pX8" secondAttribute="trailing" constant="40" id="bYJ-16-CCF"/>
+                            <constraint firstItem="Vdr-4g-wZr" firstAttribute="leading" secondItem="CG9-da-340" secondAttribute="leading" constant="20" id="byZ-Sg-9dZ"/>
+                            <constraint firstItem="XjC-qS-GUC" firstAttribute="top" secondItem="Vdr-4g-wZr" secondAttribute="bottom" constant="40" id="giO-yS-IIK"/>
+                            <constraint firstItem="naP-0G-pX8" firstAttribute="top" secondItem="tgA-XD-HRa" secondAttribute="bottom" constant="40" id="iyF-BM-M1v"/>
+                            <constraint firstItem="XjC-qS-GUC" firstAttribute="leading" secondItem="CG9-da-340" secondAttribute="leading" constant="20" id="vBG-H7-aif"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jIJ-it-edl">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="edit" id="ULJ-SC-eWe">
+                            <connections>
+                                <segue destination="jcR-Ml-Xpw" kind="presentation" id="bmV-Q6-Zkq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUR-Cd-ebM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="947" y="720"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="brb-E8-Agh">
+            <objects>
+                <viewController id="jcR-Ml-Xpw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Oa-4g-XNb">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ctd-2d-XYf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nuu-2Y-H11" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1847" y="720"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7oZ-vU-xQo">

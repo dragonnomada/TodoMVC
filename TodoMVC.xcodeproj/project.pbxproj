@@ -19,6 +19,7 @@
 		EBEFCFAF2A20565A000CA445 /* TodoHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEFCFAE2A20565A000CA445 /* TodoHomeController.swift */; };
 		EBEFCFB12A20569D000CA445 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEFCFB02A20569D000CA445 /* TodoModel.swift */; };
 		EBEFCFB42A205CF7000CA445 /* TodoMVC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBEFCFB22A205CF7000CA445 /* TodoMVC.xcdatamodeld */; };
+		EBEFCFB62A206DD8000CA445 /* TodoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEFCFB52A206DD8000CA445 /* TodoDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		EBEFCFAE2A20565A000CA445 /* TodoHomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoHomeController.swift; sourceTree = "<group>"; };
 		EBEFCFB02A20569D000CA445 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
 		EBEFCFB32A205CF7000CA445 /* TodoMVC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoMVC.xcdatamodel; sourceTree = "<group>"; };
+		EBEFCFB52A206DD8000CA445 /* TodoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				EBEFCFAC2A205637000CA445 /* TodoHomeViewController.swift */,
+				EBEFCFB52A206DD8000CA445 /* TodoDetailViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				EBEFCF7A2A204DE8000CA445 /* AppDelegate.swift in Sources */,
 				EBEFCFB12A20569D000CA445 /* TodoModel.swift in Sources */,
 				EBEFCF7C2A204DE8000CA445 /* SceneDelegate.swift in Sources */,
+				EBEFCFB62A206DD8000CA445 /* TodoDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
