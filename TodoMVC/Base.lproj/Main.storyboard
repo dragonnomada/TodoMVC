@@ -106,17 +106,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="162" translatesAutoresizingMaskIntoConstraints="NO" id="Vdr-4g-wZr">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="162" translatesAutoresizingMaskIntoConstraints="NO" id="Vdr-4g-wZr">
                                 <rect key="frame" x="20" y="123" width="353" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSH-m7-L5i">
-                                        <rect key="frame" x="0.0" y="0.0" width="146.33333333333334" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="141.66666666666666" height="40"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⭕️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRD-SU-3AX">
-                                        <rect key="frame" x="308.33333333333331" y="0.0" width="44.666666666666686" height="40"/>
+                                        <rect key="frame" x="315" y="0.0" width="38" height="40"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -127,21 +127,24 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created at: -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjC-qS-GUC">
-                                <rect key="frame" x="20" y="203" width="353" height="26.333333333333343"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <rect key="frame" x="20" y="203" width="353" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated at: -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgA-XD-HRa">
-                                <rect key="frame" x="20" y="249.33333333333334" width="353" height="26.333333333333343"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <rect key="frame" x="20" y="243.33333333333334" width="353" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="naP-0G-pX8">
-                                <rect key="frame" x="40" y="315.66666666666669" width="313" height="34.333333333333314"/>
+                                <rect key="frame" x="40" y="303.66666666666669" width="313" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Close"/>
+                                <connections>
+                                    <action selector="closeAction:" destination="Pgs-vb-c9i" eventType="touchUpInside" id="U0T-k8-IgB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CG9-da-340"/>
@@ -168,6 +171,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="checkedLabel" destination="lRD-SU-3AX" id="K8W-F7-1DU"/>
+                        <outlet property="createdAtLabel" destination="XjC-qS-GUC" id="3Q9-GU-kG0"/>
+                        <outlet property="titleLabel" destination="gSH-m7-L5i" id="HFT-n5-FDN"/>
+                        <outlet property="updateAtLabel" destination="tgA-XD-HRa" id="lhC-Gg-RPS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUR-Cd-ebM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

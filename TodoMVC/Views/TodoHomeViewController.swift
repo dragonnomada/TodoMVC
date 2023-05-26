@@ -12,13 +12,13 @@ class TodoHomeViewController: UIViewController {
     @IBOutlet weak var todosTableView: UITableView!
     
     lazy var todoHomeController = {
-        let controller = TodoHomeController(self)
+        let todoHomeController = TodoHomeController(self)
         
-        // TODO: Configure the controller
+        // TODO: Configure todoHomeController
         //controller.deleteAllTodos()
-        controller.generateSampleTodos()
+        todoHomeController.generateSampleTodos()
         
-        return controller
+        return todoHomeController
     }()
     
     override func viewDidLoad() {
@@ -26,8 +26,7 @@ class TodoHomeViewController: UIViewController {
         
         title = "Todo Home"
 
-        todosTableView.dataSource = todoHomeController
-        todosTableView.delegate = todoHomeController
+        todoHomeController.configureTableView(todosTableView)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

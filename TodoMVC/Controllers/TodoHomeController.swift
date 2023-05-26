@@ -18,6 +18,11 @@ class TodoHomeController: NSObject {
         self.view = view
     }
     
+    func configureTableView(_ tableView: UITableView) {
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
     func deleteAllTodos() {
         for todo in todoModel.todosUnchecked {
             todoModel.delete(id: todo.id ?? UUID())
