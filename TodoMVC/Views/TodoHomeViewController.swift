@@ -17,6 +17,8 @@ class TodoHomeViewController: UIViewController {
         let controller = TodoHomeController(todoModel: todoModel ?? TodoModel())
         
         // TODO: Configure the controller
+        controller.deleteAllTodos()
+        //controller.generateSampleTodos()
         
         return controller
     }()

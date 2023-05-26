@@ -68,7 +68,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3H2-Tw-dbj">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="a73-7N-p5d"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="a73-7N-p5d">
+                            <connections>
+                                <segue destination="3fY-Ym-39G" kind="presentation" id="VPz-55-kqS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="todosTableView" destination="csT-Bq-cQv" id="R8o-jH-XXy"/>
@@ -83,7 +87,7 @@
             <objects>
                 <viewController id="3fY-Ym-39G" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XRx-VZ-EQy">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="QKX-At-8sU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

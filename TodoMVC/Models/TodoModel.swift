@@ -34,6 +34,10 @@ public class TodoModel {
     
     private var context: NSManagedObjectContext { container.viewContext }
     
+    public var isEmpty: Bool {
+        (try? context.fetch(TodoEntity.fetchRequest()))?.isEmpty ?? true
+    }
+    
     public var todosChecked: [TodoEntity] {
         (try? context.fetch(TodoEntity.fetchRequest()).filter({$0.checked == true})) ?? []
     }
@@ -66,7 +70,7 @@ public class TodoModel {
         
         todo.title = title
         todo.checked = false
-        todo.created = Date()
+        todo.createAt = Date()
         
         save() {
             success(todo)
@@ -86,12 +90,12 @@ public class TodoModel {
         
         if let title = title {
             todo.title = title
-            todo.updated = Date()
+            todo.updateAt = Date()
         }
         
         if let checked = checked {
             todo.checked = checked
-            todo.updated = Date()
+            todo.updateAt = Date()
         }
                 
         if todo.hasChanges {

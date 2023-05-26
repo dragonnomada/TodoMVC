@@ -12,12 +12,31 @@ class TodoHomeController: NSObject {
     
     let todoModel: TodoModel
     
-    var checkedTodos: [TodoEntity] {
-        todoModel.
-    }
-    
     init(todoModel: TodoModel) {
         self.todoModel = todoModel
+    }
+    
+    func deleteAllTodos() {
+        for todo in todoModel.todosUnchecked {
+            todoModel.delete(id: todo.id ?? UUID())
+        }
+        
+        for todo in todoModel.todosChecked {
+            todoModel.delete(id: todo.id ?? UUID())
+        }
+    }
+    
+    func generateSampleTodos() {
+        if todoModel.isEmpty {
+            todoModel.add(title: "Hello 1")
+            todoModel.add(title: "Hello 2")
+            todoModel.add(title: "Hello 3") { todo in
+                self.todoModel.update(id: todo.id ?? UUID(), title: nil, checked: true)
+            }
+            todoModel.add(title: "Hello 4") { todo in
+                self.todoModel.update(id: todo.id ?? UUID(), title: nil, checked: true)
+            }
+        }
     }
     
 }
@@ -40,15 +59,37 @@ extension TodoHomeController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section + 1) * 2
+        if section == 0 {
+            return todoModel.todosUnchecked.count
+        }
+        if section == 1 {
+            return todoModel.todosChecked.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        let cell = UITableViewCell(style: .value2, reuseIdentifier: nil)
         
         var contentConfiguration = cell.defaultContentConfiguration()
         
-        contentConfiguration.text = "Section \(indexPath.section) \(indexPath.row)"
+        let todo = todoModel.todosUnchecked[indexPath.row]
+        
+        if indexPath.section == 0 {
+            contentConfiguration.text = "❌ \(todo.title ?? "<unknown>")"
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            let date = dateFormatter.string(from: todo.updateAt ?? todo.createAt ?? Date())
+            contentConfiguration.secondaryText = "\(date)"
+        }
+        if indexPath.section == 1 {
+            contentConfiguration.text = "✅ \(todo.title ?? "<unknown>")"
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            let date = dateFormatter.string(from: todo.updateAt ?? todo.createAt ?? Date())
+            contentConfiguration.secondaryText = "\(date)"
+        }
         
         cell.contentConfiguration = contentConfiguration
         
